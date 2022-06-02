@@ -7,7 +7,6 @@ import {
   DataSourceInstanceSettings,
   MutableDataFrame,
   FieldType,
-  stringFormater,
 } from '@grafana/data';
 
 import { MyQuery, MyDataSourceOptions } from './types';
@@ -46,8 +45,6 @@ export class DataSource extends DataSourceApi<MyQuery, MyDataSourceOptions> {
         case 'Apps':
           return this.listApps(query);
         case 'Error groups':
-          const { range } = options;
-          const from = range!.from.valueOf();
           return this.listErrorGroups(query);
         case 'Errors':
           return this.listErrors(query);
@@ -572,7 +569,4 @@ export class DataSource extends DataSourceApi<MyQuery, MyDataSourceOptions> {
       return undefined;
     }
   }
-}
-function rootElement(url: string, params: { start: string; end: string }, rootElement: any) {
-  throw new Error('Function not implemented.');
 }
